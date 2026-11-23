@@ -1,6 +1,6 @@
 {
   "name": "coohom-indian-interiors",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Claude skill + MCP server for designing Indian homes and interiors in Coohom: kitchens, wardrobes, lofts, standards and plywood cut lists.",
   "type": "module",
   "bin": {

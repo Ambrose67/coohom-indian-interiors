@@ -1,6 +1,6 @@
 ---
 name: coohom-indian-interiors
-description: Use when designing Indian homes or interiors in Coohom — modular kitchens, wardrobes, lofts (including RCC/concrete lofts), TV, pooja, crockery and shoe units, doors, false ceilings, materials — or when making a plywood cut list / sheet count from a cabinet design. Covers Indian (Tamil Nadu and Kerala) practice, 9/10/11 ft ceilings, and step-by-step Coohom workflows for the Kitchen & Bath, Kitchen & Closet, staircase, drawing and render tools.
+description: Use when designing Indian homes or interiors in Coohom, or operating any Coohom tool (walls, columns, wall/ceiling editors, lighting, materials, AI templates, Kitchen & Bath, closets, drawings, rendering) — modular kitchens, wardrobes, lofts (including RCC/concrete lofts), TV, pooja, crockery and shoe units, doors, false ceilings, materials — or when making a plywood cut list / sheet count from a cabinet design. Covers Indian (Tamil Nadu and Kerala) practice, 9/10/11 ft ceilings, and step-by-step Coohom workflows for the Kitchen & Bath, Kitchen & Closet, staircase, drawing and render tools.
 ---
 
 # Indian interiors in Coohom
@@ -32,7 +32,8 @@ If the `indian-interiors` MCP server is connected, call its tools instead of doi
 | `references/rooms-and-units.md` | Living/TV, crockery, shoe rack, pooja, bedroom, dressing/study, bathroom vanity, doors, false ceilings, lighting |
 | `references/materials-and-hardware.md` | Ply grades (MR/BWR/BWP), HDHMR, MDF, WPC, laminates, acrylic, PU, veneer, edge band, hardware types and brands, colour palettes |
 | `references/cut-list.md` | Panels from a cabinet, 8'×4' sheet optimisation, grain, edge banding, kerf, labels, the JSON spec format for the script |
-| `references/coohom-workflows.md` | Step-by-step Coohom: floor plan, doors/windows, models, materials, ceilings & light strips, Kitchen & Bath tool, Kitchen & Closet (wardrobe) tool, staircases, drawings/elevations, JSON/XML export, rendering |
+| `references/coohom-workflows.md` | Scratch-to-finish Coohom steps: project setup, wall tool, wall edits/heights, beams, columns, doors/windows, stairs, AI templates and AI floor-plan fix, placing models and kitchen assets, materials/colour/texture/tiles, wall editor (panels, mouldings), ceiling editor (coves), lighting (strips, spots/IES, colour temperature), Kitchen & Bath, wardrobes/closet, Freeform/custom modelling, 2D and construction drawings, exports, rendering |
+| `references/coohom-plans.md` | Which Coohom plan (Basic/Pro/Elite/Enterprise) unlocks which feature, credits |
 | `references/sources.md` | Where each kind of number comes from, and what is unconfirmed |
 
 ## Default workflow for a full-home interior

@@ -1,90 +1,215 @@
-# Coohom workflows (step by step)
+# Coohom workflows — scratch to finished design
 
-Coohom is a browser-based (also Windows/Mac app) 3D interior tool. Menu names below are from the Coohom Help Center and beginner lessons as read in November 2026; Coohom updates its UI often, so if a label differs, take a screenshot and adapt. Features marked **(plan-dependent)** may need a paid or enterprise plan — if a tool is locked, tell the user rather than working around it.
+Menu names come from Coohom's beginner lessons, Help Center and pricing page, read in November 2026. Coohom updates its UI often: if a label differs, take a screenshot and adapt. Plan tags such as **[Elite]** come from the pricing page or the article itself (see `coohom-plans.md`). If a tool is locked on the user's account, say so; do not work around it.
 
-The canvas is WebGL: walls and models are not in the page's accessibility tree. Read menus and input fields from the DOM, judge the design from screenshots, and type exact numbers into fields instead of dragging.
+**Driving Coohom as an agent.** The canvas is WebGL, so walls and models are not in the page's accessibility tree. Read menus and fields from the DOM, judge the design from screenshots, and type numbers into fields rather than dragging. Dimension fields accept arithmetic (`+ - * /`). Save often (Ctrl/⌘+S). Never refresh a project tab with unsaved work, and never delete, overwrite or share a project without the user's go-ahead.
 
-## 0. Setup
-1. Workbench → **New Project**. Three starts: upload a floor plan (CAD or image), pick a template, or start blank.
-2. Avatar (top-right) → **Preferences**: language, **unit** (set mm for interiors), appearance; Floor Plan → **Wall Intersect Split = Auto** is handy. Keyboard shortcuts and mouse controls are listed there.
-3. Countertop thickness and other cabinet fields can refuse to change while the unit is metres — switch to millimetres first (Help Center tip).
+Contents: 0 Project setup · 1 Floor plan (wall tool, editing walls, height, beams, columns, openings, stairs) · 2 AI tools · 3 Placing models · 4 Materials, colour and texture · 5 Wall editor (panels, mouldings, paint) · 6 Ceiling editor · 7 Lighting · 8 Kitchen & Bath · 9 Wardrobes and custom furniture · 10 Freeform / custom modelling · 11 2D drawings and exports · 12 Rendering · 13 Hand-over checklist
 
-## 1. Floor plan, walls, rooms
-1. Upload the CAD/PDF/image plan if you have one (traces faster), or draw: **Draw Room / Rectangle Wall** for closed rooms, **Wall** for single walls (click start, type length, Enter; right-click to exit).
-2. Edit walls: **Edit → Merge/Split/Align**, or select a wall and use **Split/Merge** in the floating toolbar. **One-click Slice** (Shift for all walls) splits at intersections; **Split** at a typed distance; double-click joins aligned walls of equal thickness; **Align** snaps one line to another.
-3. Wall thickness: 230 external / 115 internal brick (or finished 260 / 145) — say which convention you used. Individual wall height can be adjusted.
-4. Name every room (Kitchen, Bed 1, Pooja…). Check each room's area against the brief.
-5. Multiple floors: create floors and add **Floor Opening** for stair voids and double heights.
+---
 
-## 2. Doors and windows
-1. Place doors/windows from the structure tools; set width, height and sill height numerically (Indian defaults: main 1000–1200 × 2100, bedroom 900, toilet 750; window sill 750–900).
-2. Custom shapes: rectangular, arched and custom openings; curved windows and corner bay windows have their own tools.
-3. Change a style: select the door/window → **Style** in the Parameters panel (door leaf, mouldings, panels, handles). To swap the whole model, enter the **Doors & Windows** customisation, switch to **3D**, and drag the new model onto the old one (in 2D it reports an overlap).
+## 0. Project setup
+1. Workbench → **Create New Project** / **New Project**. There are three ways to start: upload a floor plan (CAD or image), start from a template (including AI templates, see §2), or start blank.
+2. Avatar (top right) → **Preferences**: set language, units (**mm** for interiors; cabinet fields such as countertop thickness can refuse edits while the unit is metres), appearance, keyboard shortcuts and mouse controls. Floor Plan → **Wall Intersect Split = Auto** makes crossing walls split automatically. Renderings → brightness measurement unit.
+3. Confirm the brief first: room sizes, north, ceiling height (9/10/11 ft = 2743/3048/3353), Vastu, style and budget. Restate the room list to the user before drawing.
 
-## 3. Model library and materials
-1. Model library (left panel): search, favourite, drag into the plan; set W/D/H, position and rotation in the right panel. Group/ungroup with shortcuts. Upload your own SketchUp/3ds Max models to a personal library.
-2. Floors and walls: select a surface and replace its material; set tile pattern and direction; thresholds.
-3. **AI templates** can furnish a whole house in one style — use only as a starting point and then correct sizes to Indian standards.
+## 1. Floor plan
 
-## 4. Ceilings and lighting
-1. Select a ceiling surface → **Ceiling Editor** in the floating window. Draw a shape (line/curve/rectangle/circle), set **Extrusion** for the drop (225–300 typical), then select the shape edge and pick a cove profile such as **Indented Lamp Belt** or **External Expansion Belt**; **Exit with Save**.
-2. Light strips can also be added from **Advanced Tool → Material and Component → Light Strips** (with or without a light trough: brightness, colour, size).
-3. Ceiling templates exist for tray, stepped, curved and luminous ceilings; you can save your own templates.
-4. For a 9 ft ceiling keep a peripheral ceiling/cove only (see `rooms-and-units.md`).
-5. A UGR/illumination calculation report is available from the lighting tools (plan-dependent).
+### 1a. Upload instead of redrawing
+- **Import 2D Drawing** (CAD, PDF or image), then **Floor Plan Check**. For the AI fix-up, see §2.
+- Several images can be imported to build multi-floor layouts.
 
-## 5. Kitchen & Bath tool (modular kitchen)
-Entry: **Advanced Tool** (left sidebar) → **Kitchen & Bath**. (Some articles call the cabinet tool "Kitchen & Closet".)
+### 1b. Wall tool: drawing walls
+1. Left toolbar → **Draw Room / Rectangle Wall** for closed rooms, or **Wall** for single runs. Walls must close a loop to form a room.
+2. Click a start point, type the length, then press Enter. Right-click ends the tool.
+3. Hold **Alt** while drawing to change the thickness on the fly.
+4. Indian convention: 230 mm external and 115 mm internal brick walls (or 260/145 finished with plaster). State which convention you used.
 
-Option A — AI auto-layout:
-1. Choose **AI Kitchen Auto-Layout** at the top. Draw the cabinet runs inside the pop-up room; right-click to stop drawing.
-2. Place appliances from the left toolbar (type positions to be exact).
-3. **Generate** → confirm "replace current design" → switch to **3D**. Then correct every unit to the plan from `kitchen_layout`.
+### 1c. Editing walls
+- **Length**: select the wall, click its length dimension, type the value, choose which way it extends, then press Enter.
+- **Thickness**: click the thickness dimension and type a value, or select the wall and set **Thickness** in the right panel.
+- **Height**: select the wall and set **Height** in the right panel (default 2800). For one wall only: in 3D, Ctrl/⌘-click the wall and set Height under **Basic**. Lower than the room makes a half wall ("Custom"); higher raises the room after you confirm. Set **Room Height** first, then use **Custom** for individual walls.
+- **Split / Merge / Align**: use the **Edit** menu or the wall's floating toolbar.
+  - **One-click Slice** splits a wall at its intersections; Shift-select all walls to slice every wall.
+  - **Split** cuts at a point or at a typed distance.
+  - Double-click joins aligned walls of the same thickness; **Merge → Select Neighbor Object** does the same from the menu.
+  - **Align** lines one wall up to a reference line.
+- Name every room (Kitchen, Bed 1, Pooja…) and check each area against the brief.
 
-Option B — manual (more control, recommended for Indian sizes):
-1. Drag base, wall and tall cabinets from the public library; set width/height/depth numerically to the `kitchen_layout` unit list (base carcass 720, depth 560–580; wall units 600–720 high, 300–350 deep, bottom at counter + 600–750; tall 2100–2150).
-2. Drawers: **Parts** (top of left sidebar) → **Drawer** → drag in → **Fill with Drawers**; set **Number** and **Fill Mode** (Equal / By Ratio / By Numeric Value).
-3. Replace an appliance in a cabinet by double-clicking a similar-size one in the list.
-4. **Generate → Countertop** (top toolbar or a cabinet's floating toolbar): select cabinets (Shift or **Auto-select**), set front edge, backsplash and material (granite/quartz), **Generate**; **manual edit** for custom outlines and edge oversize; **Finish**.
-5. **Generate → Sink**: pick sink and tap style, installation type and spacing; **Add Sink** for a second bowl; **Generate**. (Generate stays grey until a cabinet is selected.)
-6. **Generate → Stove** (hob) and chimney hood style; installation type, alignment, spacing; **Generate**. Check the hood is 650–750 above the hob.
-7. **Generate → Toekick molding** (skirting) with style/material; crown molding, knobs/handles, furniture legs and sliding doors also have one-click generators.
-8. Materials: select a cabinet → **Style** in the Parameters panel (carcass, door and handle style); **Global Edit → Global Style** to change all custom cabinets at once; **Material Brush** to copy a finish.
-9. **Smart Decors** puts template decor into cabinets for renders.
+### 1d. Beams
+1. Left panel → **Beam**, then click the start and end points. Shift keeps it orthogonal; Ctrl/⌘ cycles the location line (Internal / Center / External).
+2. Set **Width** and **Height** in the right panel. **Position** is Ceiling or Floor. Then set **Distance from Top Surface** or **Distance from the Ground**.
+3. Model every beam drop: it decides loft heights, wardrobe tops and false-ceiling levels.
 
-## 6. Wardrobes, lofts, TV/crockery/shoe units (Kitchen & Closet → Closet)
-1. Enter **Kitchen & Closet design** → choose **Closet** (or start from a design template and **Apply**).
-2. From the **Public** library filter unit cabinets, wardrobes, tatami, wall panels; drag a cabinet out and set its size from `wardrobe_layout` (bay widths, main height 2100/2400, depth).
-3. Internals: drag panels (shelves, partitions), rods, drawers into the cabinet; doors: drag a door onto the cabinet and adjust its four handles (auto-snaps to edges). Sliding doors: **Generate → Sliding Doors**, choose the cabinet with top lines, set area/count and style.
-4. Lofts: add a second cabinet row above at the loft height(s) from `wardrobe_layout`, with shutters aligned to the wardrobe below.
-5. **RCC lofts**: model the concrete slab as part of the building (a structural element/box from the structure or construction tools — confirm the exact tool in your version, or use Custom modeling/Freeform), then place a shutter-only front (frame + shutters) in Closet.
-6. Style and materials as for kitchens (**Style**, **Global Style**). Note: the wall/floor/ceiling material editors are not available inside the Kitchen & Closet tool — do those in the main interior design tool.
+### 1e. Columns, pillars and flues
+- The Help Center documents columns under the **Kitchen & Closet** room tools: select the room, then pick a column, beam or flue.
+- Hover the column's lower-right corner to choose a square or round shape, then drag it into place.
+- Resize with the adjustment points, or set length and width under **Basic**. For height, switch to **Custom** and type the value.
+- In the main floor planner, use its structure tools the same way. In Cloud Design 5.0 columns fuse with walls to enclose rooms.
+- Indian RCC columns are typically 230 × 300 to 230 × 450 (rule of thumb; use the structural drawing).
 
-## 7. Staircases
-1. In the floor plan tool hover **Staircase** in the left sidebar and pick a model (straight, L, U, spiral…); drag it into place.
-2. Select it → set **Length, Width, Height** in the right panel (greyed fields are fixed by the model).
-3. **Customize** (floating window) → reselect → set **Number of Staircase Steps**, **Railing Height** and **Tread Depth**.
-4. Check: riser 150–190, tread 250–300, 2R + T ≈ 600–640, width 900–1200, headroom ≥ 2200, handrail ≈ 900. Place the floor opening above.
-5. Under-stair storage: use a custom cabinet (Closet) shaped to the stair.
+### 1f. Doors, windows and openings
+- Place doors and windows from the structure tools. Set width, height and sill numerically.
+- Indian defaults: main door 1000–1200 × 2100, bedroom 900, toilet 750, window sill 750–900.
+- There are also tools for rectangular, arched and custom openings, curved windows and corner bay windows.
+- To change a style: select the door or window → **Style** in the Parameters panel (leaf, mouldings, panels, handles).
+- To swap the whole model: enter the **Doors & Windows** customisation, switch to **3D** and drag the new model onto the old one (in 2D it reports an overlap).
+- **Floor Opening**: **Plane** cuts the floor slab; **Top Face** cuts the ceiling, for stair voids and double heights.
 
-## 8. Drawings (plans, elevations) and exports
-- **Floor plan drawings**: **Drawings → Floor Plan** (enterprise: **Drawings & Schedules → Floor Plan Drawings**). Pick a template, toggle wall/furniture shadows, annotate (Auto-Annotation, Dimension, Attribute, Text, Leader, Symbol), set scale, then **Download** as image or PDF (plan-dependent).
-- **Cabinet drawings (Kitchen & Closet)**: **Drawing → Edit views** — auto-annotate or add dimension/text annotations; place elevation marks with **generate views → elevation** (Auto-Place or manual), then generate the elevation views. **Drawing → Drawings Layout** arranges views on sheets (drag from the view manager, set sheet scale) → **Download** and choose the format.
-- A small **Drawing** tab in the top-right view window shows drawings live while designing (**Auto-Annotate**, **Editing Drawing Views**, **Back to Design**).
-- Sections: not documented in the Help Center pages read; if needed, check your version or draw them from the elevations.
-- **File → Export JSON/XML** (Kitchen & Closet): set the quote logic and the range (room, floor, all floors) → **Generate** → **Download** (zip) — useful for factory software and quotations.
-- Quotations: enterprise accounts can configure quotation lists and rules (projection area, unfolding area, running metre). Coohom does not document a plywood cut list export; use the `cut_list` tool with the module sizes from the drawings.
+### 1g. Staircases
+1. Left sidebar → hover **Staircase** → pick a model → drag it in.
+2. Set **Length, Width, Height** in the right panel. **Customize** → reselect the stair → set **Number of Staircase Steps**, **Railing Height** and **Tread Depth**.
+3. Check: riser 150–190, tread 250–300, 2R + T ≈ 600–640, width 900–1200, headroom ≥ 2200, handrail ≈ 900. Add the floor opening above it.
 
-## 9. Rendering
-1. **Live Render** (top of the design tool) previews while you edit materials and models.
-2. **Render** settings: aspect ratio, resolution, views (smart views or saved **My Views**), lighting, environment; **Generate** (turn wireframe off first). Results go to the **Gallery**; **Compare** gives a before/after slider.
-3. **Classic Render** offers panoramas, videos and other outputs. Rendering uses credits (plan-dependent) — ask before large batches.
-4. Camera at eye level (about 1500) for client views; show 2–3 renders per room.
+### 1h. Multiple floors
+Create the floors, keep wet areas stacked, and cut floor openings for the stairs.
 
-## 10. Hand-over checklist
-- Rooms named, areas checked; every door swing clear.
-- Kitchen: counter height, triangle, island clearance, appliances, chimney duct.
+## 2. AI tools (what is documented)
+| Tool | Where | What it does |
+|---|---|---|
+| **AI templates** | Beginner lesson 4: pick an AI template style → select a template → apply it to the whole house | Furnishes and decorates every room in one style. Use it as a starting point, then correct sizes to Indian standards (furniture, clearances, kitchen heights) |
+| **Auto-Fix Imported 2D Floor Plans with AI** | **Import 2D Drawing** → **Floor Plan Check** | Recognises walls and openings from a drawing. **Opacity** (hold Y) compares with the original; **Re-recognition** re-reads a boxed area; **Alignment** (Ignore Current / Focus On) tidies wall alignment; **Generate** finishes |
+| **AI Kitchen Auto-Layout** | Advanced Tool → Kitchen & Bath → top bar | Draw the cabinet runs, place appliances, **Generate** (it replaces the current kitchen). Check the result with `kitchen_layout` rules |
+| AI rendering / "AI tools" | Mentioned on the pricing page for Pro and above, with an AI allowance by contract on Enterprise | No step-by-step article found |
+
+"AI Home", AI decoration or generator tools and AI render settings had no Help Center article in November 2026. If the user's account shows them, take a screenshot, describe what is on screen, and keep Indian sizes and rules in force.
+
+## 3. Placing models (furniture, appliances, decor, kitchen assets)
+1. Left panel → **Model Library**. Search by keyword or use **Search by image**. Click the model or drag it into the plan.
+2. The floating toolbar offers flip, duplicate, rotate and delete. Set W/D/H, position, height off the floor and rotation in the right panel. Typed values beat dragging.
+3. Group and ungroup models with shortcuts. Favourite models you reuse.
+4. Upload your own SketchUp or 3ds Max models to **My Library** (personal library slots depend on plan: 10 Basic, 100 Pro, 2000 Elite).
+5. Check clearances with the measure tool against `rooms-and-units.md`: walkways 900–1200, bed sides ≥ 600, wardrobe front 900.
+6. **Kitchen assets**: loose appliances (fridge, microwave, mixie, RO) come from the library. Cabinet-integrated hob, sink, chimney and built-in appliances come from the Kitchen & Bath tool (§8). Replace an appliance inside a cabinet by double-clicking a similar-size one in the list.
+7. Lighting fixtures (pendants, downlight models, fans) are library models. The light they give comes from §7.
+
+## 4. Materials, colour and texture
+- **Paint or replace a surface**: select a floor, wall or ceiling surface and replace its material.
+  - In the desktop app the whole room is painted by default. To paint one wall: **Model Library → Finishes**, switch to **3D**, pick a finish, then **Ctrl-drag** it onto that wall.
+- **Colour selection**: paints are under **Wall Decor → Paints & Coatings** (in the wall and ceiling editors) and **Finishes**.
+  - The Help Center has no colour-picker article; choose from the palette shown, then compare with the client's paint shade card.
+  - Use the 60-30-10 rule and the regional palettes in `materials-and-hardware.md`. Screen colours differ from paint: tell the client to test patches on site.
+- **Texture and pattern**: the wall and ceiling editors have **Wall Decor** categories (Wood Veneers, Wall Panel, Stone → Marble, …). **Paving Brush** and **Molding Brush** copy textures and mouldings. **Edit Elevation** assigns a material to a modelled line.
+- **Floor tiles**:
+  1. Select the floor → **Floor Editor** → **Tiles** → choose a category (e.g. **Porcelain Tile**) → pick a material.
+  2. **Paving** sets the laying pattern. **Control** sets position, angle and gap (joint). **Pattern** sets tile size.
+  3. **Exit with Save**. **Rotate** on a room's floating toolbar turns the floor pattern.
+  4. Indian sizes: 600 × 600, 600 × 1200, 800 × 1600; granite thresholds at doors; anti-skid tiles in wet areas.
+- **Kitchen and Closet cabinets**: select a cabinet → **Style** (carcass, door, handle). **Global Edit → Global Style** changes every custom cabinet; **Material Brush** copies a finish.
+
+## 5. Wall editor (panels, cladding, mouldings, feature walls)
+1. Select the wall → **Wall Editor**.
+2. Lay out regions: **Guides** add construction lines; **Rectangle** splits the wall into zones (e.g. a TV-wall centre panel with two side zones).
+3. For each zone pick a material from **Wall Decor** (Wood Veneers, Wall Panel, Stone/Marble…). Set **Extrusion** for depth (panels, fluting, grille). **Edit Elevation** gives a modelled line its material.
+4. For repeated battens or grilles: draw one, then **Duplicate → Paste into Current Styling Area**, or Shift-frame-select it → **Array → Rectangular Array**.
+5. For a lit groove, select the line and tick **Indented Lamp Belt**, then set Brightness and Color.
+6. Check the preview in the top-right window, then **Exit with Save**.
+7. **Mouldings, skirting, wainscoting**: **Advanced Tool → Material & Component → Moldings**. Choose a type (e.g. corner moldings) and click to place it; or Shift-click edges and pick the surface.
+   - **Section Plane** sets L, W, Flip, Angle and Offset.
+   - **Secondary Beam Lights** adds a light strip in the moulding.
+   - **Replace** swaps the material; **Reset** undoes changes.
+8. Free-form wall features: **Material & Component → Push/Pull** (§10).
+
+## 6. Ceiling editor (false ceilings, coves)
+1. Select the ceiling → **Ceiling Editor**. You can also reach it from **Advanced Tool → Material & Component → Ceiling → Ceiling Editor**, or **3D → Ceiling → Ceiling Editor**.
+2. Draw the false-ceiling outline with **Line / Curve / Rectangle / Circle**. Use **Offset** for a parallel border (a peripheral ceiling).
+3. Set **Extrusion** for the drop: 225–300 typical. For a 9 ft room keep it peripheral only (see `rooms-and-units.md`).
+4. **Cove light**: choose **Light Strip**, click the shape's edge, then pick **Indented Lamp Belt** (a hidden cove) or **External Expansion Belt**.
+5. Finish surfaces from **Wall Decor → Paints & Coatings**; use luminous materials for backlit panels.
+6. **Exit with Save**.
+7. **Templates**: **My Account → My Styling → Save as Ceiling Template** (with room type and name). In another room, open the Ceiling Editor → **My Styling → Apply**; the room must be at least as large.
+8. Help Center guides exist for curved, tray (slanted edge), multi-level stepped, no-main-light and freeform luminous ceilings.
+
+## 7. Lighting
+| Need | How |
+|---|---|
+| Strip / cove LED | §6 step 4, or **Material & Component → Light Strips**. With a light trough: brightness, colour, length, width. Without: brightness, colour, position. Shift-select paths and click the blue surface; Shift+double-click a strip to **Connect Faces / Group** |
+| Lights in mouldings or wall grooves | **Secondary Beam Lights** (Moldings) or **Indented Lamp Belt** (Wall Editor) |
+| Spot / downlights / extra fill | Render → light customisation (below): **Rectangle Light**, **Omni Light**, **IES Lights** (upload a manufacturer's IES file for a real spot beam), **Volumetric Lights**. Downlight fixtures themselves are library models |
+| Colour temperature & brightness | Click a light → colour, brightness and height in the right panel. Sunlight: **Status, Color Temperature, Shadow Softness, Brightness** (the article suggests ≤ 50%) and sun position |
+| Presets | **Natural Daylight 3.0**, **Natural Nightlight 3.0**, Public Space templates |
+
+To customise lights: **Render** → add a custom lighting scheme → name it → pick a base template → add or adjust lights → Save.
+
+Indian targets: warm 2700–3000 K in living and bedrooms; about 4000 K in kitchen, study and bath. Under-cabinet task light in kitchens. See the lux table in `rooms-and-units.md`.
+
+## 8. Kitchen & Bath (modular kitchen, vanity)
+**[Enterprise for the parametric editor, K&B construction drawings and JSON/XML export, per the pricing page; check what the account shows.]** Entry: **Advanced Tool → Kitchen & Bath**. Some articles call the closet side "Kitchen & Closet".
+
+1. Get the unit plan from `kitchen_layout` (layout, counter height, unit list with positions).
+2. Model columns, beams and flues inside the room tools (§1e) so cabinets avoid them.
+3. Optional: run **AI Kitchen Auto-Layout** (§2) for a concept. Otherwise place cabinets from the catalogue.
+   - Start with tall units, fixed appliances and corners, then fill each run by dimension.
+   - Sizes: base carcass 720, depth 560–580; wall units 600–720 high, 300–350 deep, bottom at counter + 600–750; tall units 2100–2150.
+4. Drawers: **Parts → Drawer** → drag in → **Fill with Drawers**. Set **Number** and **Fill Mode** (Equal / By Ratio / By Numeric Value).
+5. **Generate → Countertop** (Shift-select cabinets or **Auto-select**):
+   - Set the front edge, backsplash and material (granite or quartz).
+   - **manual edit** for custom outlines and edge oversize; you cannot change only one side's height.
+6. **Generate → Sink**: style, tap, installation type and spacing; **Add Sink** for a second bowl. Put it centred under the window.
+7. **Generate → Stove**: hob and chimney hood style, installation type, alignment, spacing. Keep the hood 650–750 above the hob and the hob away from the window and fridge.
+8. **Generate → Toekick molding** (skirting). Crown molding, knobs/handles, legs and sliding doors also have one-click generators.
+9. **Style / Global Style / Material Brush** for finishes; **Smart Decors** to dress cabinets for renders.
+10. Bathroom: place the WC, shower and vanity to their rough-ins; for the vanity use **Fill with Drawers** and BWP/WPC materials.
+
+## 9. Wardrobes, lofts, TV / crockery / shoe / pooja units (Closet, custom furniture)
+1. **Kitchen & Closet design → Closet** (or apply a design template). Get the plan from `wardrobe_layout`.
+2. From the **Public** library choose unit cabinets, wardrobes, tatami or wall panels. Drag one out and set its size per bay (main height 2100/2400, depth 600 hinged or 650 sliding).
+3. Internals: drag shelves, partitions, rods and drawers into the cabinet.
+   - Doors: drag a door onto the cabinet and set it with its four adjustment points (they snap to edges).
+   - Sliding doors: **Generate → Sliding Doors**.
+4. Lofts: add a second row of cabinets at the loft heights, with shutters lined up to those below.
+5. RCC lofts: model the slab as building structure (a structural box or beam, or a Freeform object, §10), then add a shutter-only front.
+6. Note: the wall, floor and ceiling editors are not available inside the Kitchen & Closet tool. Do those in the main design tool.
+
+## 10. Freeform and custom modelling (3D shapes the libraries don't have) **[Pro and above: custom modeling tool]**
+- **Material & Component → Push/Pull**:
+  1. Draw a shape on a wall with Line, Rectangle, Circle or Arc.
+  2. Choose Push/Pull, click the face, then drag or type a distance. Double-click the next face to repeat the last distance.
+  3. Only architectural surfaces can be pushed or pulled, not structural walls, floors or ceilings.
+- **Import CAD file** (Material & Component): bring in a 2D CAD outline, ungroup it, Push/Pull it for thickness, group the faces and drag a texture onto it. Good for CNC jaali, temple-door outlines and custom TV-wall profiles.
+- Other tools exist in Material & Component: Loft, Face Editor, Guides, Measure, roofs and sloped ceilings.
+- **Custom modeling (Freeform)**: for scripted, exact or organic models (live-edge TV units, carved pooja frames, custom wardrobes on a chosen wall), use the separate **`coohom-freeform`** skill and its `freeform-modeling-mcp` tools.
+  - Entry: **Advanced Tool → Custom modeling**.
+  - That skill covers connecting the session, locating walls with temporary markers, building in one named group, and making materials.
+  - Entering Custom modeling auto-saves the project.
+
+## 11. 2D drawings, construction drawings and exports
+| Output | Steps | Plan |
+|---|---|---|
+| Floor plan drawings | **Drawings → Floor Plan** (enterprise: **Drawings & Schedules → Floor Plan Drawings**). Choose a template and colour scheme, wall and furniture shadows, then annotate: **Auto-Annotation, Dimension, Attribute, Text, Leader, Symbol**. Set scale with **Adjust the Size**, then **Download** as Image or PDF | Download: **[Elite]** for personal users |
+| Custom furniture (cabinet) drawings | **Drawings → Custom Furniture Drawings** (or from Closet / Kitchen & Bath: **Drawings & Schedules → Custom Furniture Drawings**). Pick the target → **Annotation Drawing** → **Enter Annotation Drawing**. **2D** gives Front / Left / Right / Top views. Annotate with **Auto Measure / Semi-Auto Measure / Manual Measure**, callouts and internal zones. Take screenshots → **Generate Drawing** → edit title block and layout → **Download CAD File** | **[Enterprise]**; Elite users get 5 free trials |
+| Kitchen & Closet views and elevations | **Drawing → Edit views**: auto or manual annotation; elevation marks via **generate views → elevation** (Auto-Place / Manu-Place). **Drawing → Drawings Layout**: drag views onto sheets, set scale, **Download** | K&B construction drawings **[Enterprise]** |
+| Construction drawing download, CAD export | Listed as plan features | **[Elite]** and **[Enterprise]** |
+| BOM (bill of materials) | Listed as a plan feature | **[Pro]** and above; custom quotation/BOM export **[Enterprise]** |
+| JSON/XML (K&B) | **File → Export JSON/XML** → choose quote logic and range → **Generate → Download** | **[Enterprise]** |
+
+Sections: no Help Center article found. Draw sections from the elevations, or export to CAD and section there.
+
+Plywood cut list: Coohom does not document one. Use the `cut_list` tool with the module sizes from the drawings.
+
+## 12. Rendering
+1. **Render** opens the render tool. Modes: perspective, **360° walkthrough**, top view, video, real-time.
+2. Settings:
+   - **Aspect ratio**.
+   - **Lighting** template or a custom scheme (§7).
+   - **Environment**: brightness, tone, position, ambient light.
+   - **Camera**: position, Smart Views or saved **My Views**, clipping. Use about 1500 eye height for client views.
+   - **Resolution**: start at 1K for previews, then go up.
+3. **Generate**, then view results in the **Gallery** (Large View, separate window). **Share** gives a link or QR code; Recycle Bin removes images.
+4. **Live Render** previews changes while you edit and has a **Compare** slider. Turn Wireframe off before **Generate**. Its **Top Up** shows remaining credits and time.
+5. **Classic Render** is for panoramas, video and richer outputs.
+6. Plan limits (pricing page, Nov 2026):
+   - Basic: low-resolution watermarked renders; 360° at 2K.
+   - Pro: unlimited 4K, monthly 8K and video quotas, 720° VR.
+   - Elite: annual 8K/video quotas plus 3D presentation links.
+   - Credits are used for some renders. Ask before large batches.
+
+## 13. Hand-over checklist
+- Rooms named and areas checked; every door swing clear; beams and columns modelled.
+- Kitchen: counter height, work triangle, island clearance, appliances, chimney duct, sockets.
 - Wardrobes: depths, shutter widths, loft heights, RCC loft cladding.
-- Elevations with mm dimensions, materials, finish codes, hardware.
-- Cut list CSVs and sheet counts per material; edge band metres.
-- Save the project (Ctrl+S); never delete or overwrite projects without the user's go-ahead.
+- Ceilings: drops versus ceiling height; coves and lighting colour temperature.
+- Drawings: plan and elevations with mm dimensions, materials, finish codes and hardware (whatever the plan allows to download; otherwise screenshots plus the `cut_list` CSVs).
+- Cut list CSVs, sheet counts and edge band metres.
+- Renders: 2–3 eye-level views per room.
+- Project saved.

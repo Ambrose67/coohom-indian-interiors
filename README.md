@@ -8,11 +8,25 @@ Made by Rose Architects (Alangulam, Tenkasi, Tamil Nadu), an architect-led desig
 
 | Part | What it does |
 |---|---|
-| **Skill** `coohom-indian-interiors` | Design rules for kitchens, wardrobes, lofts for 9/10/11 ft ceilings, rooms, doors, ceilings, materials (MR/BWP ply, HDHMR, laminates, acrylic, PU, veneer) and hardware; step-by-step Coohom workflows (floor plan, doors/windows, models, ceilings & light strips, Kitchen & Bath, Kitchen & Closet/wardrobes, staircases, drawings/elevations, JSON/XML export, rendering); cut-list method and a CLI script |
+| **Skill** `coohom-indian-interiors` | Design rules for kitchens, wardrobes, lofts for 9/10/11 ft ceilings, rooms, doors, ceilings, materials (MR/BWP ply, HDHMR, laminates, acrylic, PU, veneer) and hardware; scratch-to-finish Coohom workflows for every tool (wall tool, columns, beams, doors/windows, stairs, AI templates, model library and kitchen assets, colour/texture/tiles, wall editor, ceiling editor, strip/spot lights, Kitchen & Bath, wardrobes, Freeform/custom modelling, 2D and construction drawings, rendering) with plan requirements; cut-list method and a CLI script |
 | **MCP server** `indian-interiors` | Four tools: `kitchen_layout`, `wardrobe_layout`, `cut_list`, `standards_lookup`. Zero dependencies — plain Node.js ≥ 18 |
 | **Plugin marketplace** | Install the skill in Claude Code with two commands |
 
 Every number is labelled: plain values are typical Indian practice, **(rule of thumb)** values are conventions, **(check catalogue)** values depend on the hardware brand. Site measurements and the client's needs always win. See [`references/sources.md`](skills/coohom-indian-interiors/references/sources.md).
+
+## Coohom plans
+
+Some Coohom tools need a paid plan. From Coohom's pricing page and Help Center (November 2026):
+
+| Feature | Plan listed |
+|---|---|
+| Custom modeling tool (Freeform), BOM download, unlimited 4K renders, 720° VR | **Pro** and above |
+| Download construction drawings and floor plans, export to CAD, 3D presentation links, team collaboration | **Elite** and above (floor plan drawing download is Elite-only for personal users) |
+| Custom Furniture (cabinet) drawings | **Enterprise** (Elite gets 5 free trials) |
+| Kitchen & Bath parametric editor, K&B construction drawings, K&B JSON/XML export | **Enterprise** |
+| Renders on the free Basic plan | 1K, watermarked; credits for some render types |
+
+Full table: [`references/coohom-plans.md`](skills/coohom-indian-interiors/references/coohom-plans.md). Accounts with trials or legacy access may differ; go by what your account shows. The plywood `cut_list` here works on any plan.
 
 ## Install
 

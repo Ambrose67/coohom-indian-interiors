@@ -12,7 +12,8 @@ How the numbers in this skill are grounded, so an agent knows how far to trust t
 | Hardware sizes (pull-outs, baskets, slides, corners) | Manufacturer catalogues (e.g. Hettich, Vauth-Sagel, Kaff list oil/bottle pull-outs for 150/200/300 cabinets) | Always (check catalogue) for the chosen model |
 | Unit counts per 1BHK/2BHK/3BHK/villa, loft split rules, island depth, landing space, top rail width, shutter gaps | Practice conventions | Marked (rule of thumb); adjust to the family |
 | Coohom menu names and steps | Coohom Help Center (coohom.com/helpcenter) and beginner lessons, read November 2026 | UI changes often — confirm with a screenshot |
+| Coohom plan features and prices | coohom.com/pricing and plan notes in Help Center articles, November 2026 | Check the pricing page and the user's account before relying on them |
 
-Not confirmed from Coohom documentation: a dedicated section-view tool, a plywood cut list / panel list export, and a separate "wall unit" or "corner unit" article. The skill says so where relevant.
+Not confirmed from Coohom documentation: a dedicated section-view tool, a plywood cut list / panel list export, a separate "wall unit" or "corner unit" article, a dedicated column tool in the main floor planner, a colour-picker article, spot/downlight tools as such, and any "AI Home" / AI decoration / AI render-settings feature (coohom.com/ai returned 404). The skill says so where relevant.
 
 "GTPT" is used by some Indian vendors for their tandem drawer / basket sets; it is not a standard term — confirm what a supplier's "GTPT" set includes.
