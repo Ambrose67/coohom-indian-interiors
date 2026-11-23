@@ -5,8 +5,9 @@ import { kitchenLayout } from "./kitchen.mjs";
 import { wardrobeLayout } from "./wardrobe.mjs";
 import { cutList } from "./cutlist.mjs";
 import { lookup, topics } from "./standards.mjs";
+import { libraryLookup, ROOM_NEEDS } from "./library.mjs";
 
-const SERVER_INFO = { name: "indian-interiors", version: "0.2.0" };
+const SERVER_INFO = { name: "indian-interiors", version: "0.3.0" };
 const PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 
 const cabinetSchema = {
@@ -102,6 +103,21 @@ export const TOOLS = [
       if (args.include_csv === false) delete r.csv;
       return r;
     },
+  },
+  {
+    name: "library_lookup",
+    description:
+      "Suggest Coohom models from the user's own library (favourites first = their usual picks, then personal library) for a room or a measured space, plus matching Kitchen & Closet catalogue folders and public model-library categories. Reads a private local catalogue (default ~/.claude/coohom-library or COOHOM_LIBRARY_DIR); call with no arguments to see what is loaded.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        query: { type: "string", description: "Free text, comma-separated alternatives, e.g. 'sofa', 'partition, jaali', 'shoe'" },
+        room: { type: "string", enum: Object.keys(ROOM_NEEDS), description: "Get suggestions for everything a room usually needs" },
+        space: { type: "object", properties: { width: { type: "number" }, depth: { type: "number" }, height: { type: "number" } }, description: "Clear space available in mm; items that do not fit are dropped" },
+        limit: { type: "number" },
+      },
+    },
+    run: (args) => libraryLookup(args),
   },
   {
     name: "standards_lookup",

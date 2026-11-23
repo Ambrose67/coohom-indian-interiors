@@ -9,7 +9,7 @@ Made by Rose Architects (Alangulam, Tenkasi, Tamil Nadu), an architect-led desig
 | Part | What it does |
 |---|---|
 | **Skill** `coohom-indian-interiors` | Design rules for kitchens, wardrobes, lofts for 9/10/11 ft ceilings, rooms, doors, ceilings, materials (MR/BWP ply, HDHMR, laminates, acrylic, PU, veneer) and hardware; scratch-to-finish Coohom workflows for every tool (wall tool, columns, beams, doors/windows, stairs, AI templates, model library and kitchen assets, colour/texture/tiles, wall editor, ceiling editor, strip/spot lights, Kitchen & Bath, wardrobes, Freeform/custom modelling, 2D and construction drawings, rendering) with plan requirements; cut-list method and a CLI script |
-| **MCP server** `indian-interiors` | Four tools: `kitchen_layout`, `wardrobe_layout`, `cut_list`, `standards_lookup`. Zero dependencies — plain Node.js ≥ 18 |
+| **MCP server** `indian-interiors` | Five tools: `kitchen_layout`, `wardrobe_layout`, `cut_list`, `standards_lookup`, `library_lookup`. Zero dependencies — plain Node.js ≥ 18 |
 | **Plugin marketplace** | Install the skill in Claude Code with two commands |
 
 Every number is labelled: plain values are typical Indian practice, **(rule of thumb)** values are conventions, **(check catalogue)** values depend on the hardware brand. Site measurements and the client's needs always win. See [`references/sources.md`](skills/coohom-indian-interiors/references/sources.md).
@@ -106,6 +106,27 @@ Wall width + ceiling (9/10/11 ft or mm) + loft type (`ply`, `rcc`, `none`) → w
 
 ### `cut_list`
 Cabinet spec → every panel (sides, top/rails, bottom, back, partitions, shelves, shutters, drawer fronts and boxes) with grain direction, edge banding and cutting sizes; per-material sheet counts on 2440×1220 sheets with trim and kerf (three-stage guillotine layout); edge band metres; CSV text. Spec format: [`references/cut-list.md`](skills/coohom-indian-interiors/references/cut-list.md).
+
+### `library_lookup`
+Suggests models from **your own Coohom library** for a room or a measured space: favourites first (your usual picks), then your personal library, with mm sizes and a fit check. It also lists the matching Kitchen & Closet catalogue folders and public model-library categories to browse.
+
+```json
+{ "room": "bedroom", "space": { "width": 3600, "depth": 700, "height": 2700 } }
+```
+```json
+{ "query": "partition, jaali", "space": { "width": 1500, "depth": 500, "height": 2700 } }
+```
+
+Your library data is private and is **not** in this repo. The tool reads it from `~/.claude/coohom-library/` (or `COOHOM_LIBRARY_DIR`):
+
+| File | Contents |
+|---|---|
+| `own.json` | `{favourites:[{id,name,cat,w,d,h}], personal_library:[{id,name}], favourite_materials:[], favourite_components:[]}`, sizes in mm |
+| `public-categories.json` | `[{name, path, count}]` from coohom.com/3d-models |
+| `catalogues/*.json` | `{label, folders: {"Base > Sink Base": {name, n, widths_in}}}` |
+| `preferences.json` | `{preferred:[{id or name, note}], avoid:[...]}`: your usual picks, ranked first |
+
+Ask your Claude agent, with the built-in browser signed in to Coohom, to "index my Coohom favourites and personal library for library_lookup". It reads your favourites (with bounding-box sizes) from the workbench pages you can already see. Every file is optional; the tool reports what is missing.
 
 ### `standards_lookup`
 Topic or free text (`"kitchen"`, `"saree hanging"`, `"toilet door"`, `"10 ft loft"`, `"gtpt"`) → typical values in mm with a pointer to the reference file.

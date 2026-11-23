@@ -37,7 +37,7 @@ test("MCP handshake, tools/list and tools/call over stdio", async () => {
   ]);
   assert.equal(init.result.protocolVersion, "2025-06-18");
   assert.equal(init.result.serverInfo.name, "indian-interiors");
-  assert.deepEqual(list.result.tools.map((t) => t.name).sort(), ["cut_list", "kitchen_layout", "standards_lookup", "wardrobe_layout"]);
+  assert.deepEqual(list.result.tools.map((t) => t.name).sort(), ["cut_list", "kitchen_layout", "library_lookup", "standards_lookup", "wardrobe_layout"]);
   for (const t of list.result.tools) assert.equal(t.inputSchema.type, "object");
   const body = JSON.parse(call.result.content[0].text);
   assert.equal(body.summary.wardrobe_height, 2100);

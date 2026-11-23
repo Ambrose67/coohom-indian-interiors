@@ -13,7 +13,9 @@ Three layers, use them in this order:
 3. **Make** it: derive panels and sheet counts with `references/cut-list.md` and `scripts/cutlist.mjs` (or the `cut_list` MCP tool).
 
 If the `indian-interiors` MCP server is connected, call its tools instead of doing arithmetic by hand:
-`kitchen_layout`, `wardrobe_layout`, `cut_list`, `standards_lookup`.
+`kitchen_layout`, `wardrobe_layout`, `cut_list`, `standards_lookup`, `library_lookup`.
+
+**Pick models from the user's own library first.** Before searching the public model library, call `library_lookup` with the room (`living`, `bedroom`, `kitchen`, `dining`, `pooja`, `foyer`, `bathroom`, `study`, `stair`) and the clear space in mm, or a keyword. It returns the user's favourites (their usual picks, ranked first) and personal-library models with sizes and a fit check, the matching Kitchen & Closet catalogue folders, and public categories to browse. Use those models by name in Coohom's model library. Only model from scratch (Freeform) when nothing suitable exists or the user asks.
 
 ## How to read the numbers
 

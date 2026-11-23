@@ -1,0 +1,9 @@
+{"favourites":[
+ {"id":"F1","name":"Sample grey sofa set","cat":"Sofa","w":2300,"d":1400,"h":830},
+ {"id":"F2","name":"Sample glass partition","cat":"Partition cabinet","w":1200,"d":370,"h":2100},
+ {"id":"F3","name":"Sample shoe cabinet","cat":"Shoe rack","w":2400,"d":390,"h":2700},
+ {"id":"F4","name":"Sample large wardrobe","cat":"Wardrobe","w":3700,"d":690,"h":2500},
+ {"id":"F5","name":"Sample small wardrobe","cat":"Wardrobe","w":1800,"d":600,"h":2100},
+ {"id":"F6","name":"Sample pooja unit","cat":"Walls","w":1600,"d":720,"h":2350}],
+ "personal_library":[{"id":"P1","name":"Sample sofa with pillows"},{"id":"P2","name":"Sample poja room"}],
+ "favourite_components":[],"favourite_materials":[]}

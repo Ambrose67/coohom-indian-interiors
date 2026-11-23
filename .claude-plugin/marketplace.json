@@ -9,7 +9,7 @@
       "name": "coohom-indian-interiors",
       "source": "./",
       "description": "Skill for designing Indian kitchens, wardrobes, lofts and full homes in Coohom, with step-by-step Coohom workflows and a plywood cut-list script.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "license": "MIT",
       "keywords": ["coohom", "interior-design", "india", "kitchen", "wardrobe", "cut-list"],
       "category": "design"

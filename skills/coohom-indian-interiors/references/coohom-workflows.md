@@ -213,3 +213,48 @@ Plywood cut list: Coohom does not document one. Use the `cut_list` tool with the
 - Cut list CSVs, sheet counts and edge band metres.
 - Renders: 2–3 eye-level views per room.
 - Project saved.
+
+## 14. Where things are (UI map, observed November 2026)
+
+**Workbench** (coohom.com/pub/saas/workbench) left menu:
+- Projects: My projects, Team projects.
+- Material:
+  - Team library: Furniture, Furniture Sets, Textures, Paving, Molding/Wall panels, Material Submission Management.
+  - Personal Library: Models / Textures / Ceiling & Wall.
+  - My Favourite, with tabs Model/Material, Kitchen & Bath, Custom Furniture, Doors & Windows, Floor plan.
+- AI tools: AI Image, AI Modeler, AI Layout, AI Templates (Submit, My Template, Template Manager, Config Management).
+- Management: Members, Subscription, Settings.
+
+**New Project** offers New 3D Project, New Kitchen & Closet Project and New House Design Project. A 3D project then offers Draw, Import floor plan, or style templates.
+
+**3D design tool**:
+- Left rail: Floor Plan, Inspiration Library, Models, Team library, Drawings, Render settings, Advanced tool, Resource manager.
+- Top bar: File, Save, Undo/Redo, Clear, Toolkit, Gallery, Live render, Share, Help; Edit / Split area / AI Layout above the canvas.
+- Floor Plan panel:
+  - Import floor plan → Import 2D drawing.
+  - Draw room → Straight wall (B), Rect wall (F), Arc wall (H), External area.
+  - Place doors and windows → Door, Window, Bay window, Opening.
+  - Add structures → Column, Beam, Staircase, Flue, Floor opening, Partition wall, Bay window sill, Niche.
+- Right panel: New upper/lower floor, Current floor, Room height, Slab thickness, wall/floor opacity.
+- Advanced tool: Material & Component, Kitchen & Bath (⌥4), Closet (⌥5), Custom modeling. Kitchen & Bath and Closet need a closed room first.
+
+**Kitchen & Closet tool**:
+- Left rail: Room, Kitchen, Closet, Decors, Rendering, Drawing.
+- Room tab:
+  - Walls: Straight, Curved and Rect wall.
+  - Structure & opening: Column, Beam, Flue, Niche, Door opening, Window opening.
+  - Doors & Windows: Single, Double and Sliding door; Linear, Linear bay and French window.
+- Library switcher (top of the Kitchen/Closet panel):
+  - **Manufacturers**: generic + manufacturer catalogues.
+  - **Enterprise**: your team's catalogue.
+  - **Personal**.
+- Catalogue types: Product Catalogue, Parts, Combinations, Materials, Hybrid libraries.
+- Kitchen generic catalogues: Frameless Cabinet New, Frameless Cabinets, Framed Cabinets. Manufacturer lines are mostly US brands (Panel Plus, River Run, Wellborn, JSI, US Cabinet Depot).
+  - **Frameless Cabinet New → Products** has about 2,400 units in folders: Base, Base Corner, Tall, Wall, Wall Corner, Filler.
+    - Sub-folders: door/drawer, full door, 2–5 drawers, sink base, cook & vent, open shelf, blind/diagonal/90° corners, utility, pantry, oven and fridge towers, wall units 15–60 in high with door, glass, spice rack, open shelf or bottom drawers, fridge bridge, peninsula units, fillers.
+    - SKUs are in **inches** (B30 = 30-inch base, TD2484 = 24 × 84 in tall). Convert: 1 in = 25.4 mm. Indian modules (300/450/600/900 mm) are close to 12/18/24/36 in.
+  - **Parts**: door and drawer-front styles and a handle library.
+- Closet manufacturers: Panel Plus, Hurmar, Selected Closet (base units, corner units, walk-in closet combinations).
+- Indian-sized custom wardrobes and kitchens are usually built with the parametric cabinets plus your own sizes, or from your favourites/team library.
+
+Your own favourites, personal library and these catalogues can be indexed locally and searched with the `library_lookup` MCP tool (see the README).
