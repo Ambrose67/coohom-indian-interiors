@@ -68,7 +68,7 @@ export const ROOM_NEEDS = {
     { need: "crockery unit", kw: ["crockery", "display cabinet", "decorative cabinet", "sideboard"] },
   ],
   pooja: [
-    { need: "pooja unit / mandir", kw: ["pooja", "puja", "mandir", "prayer", "temple"] },
+    { need: "pooja unit / mandir", kw: ["pooja", "poja", "puja", "pooja units", "mandir", "prayer", "temple"] },
     { need: "bells / lamps / decor", kw: ["bell", "lamp", "diya", "brass"] },
   ],
   foyer: [

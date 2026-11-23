@@ -258,3 +258,38 @@ Plywood cut list: Coohom does not document one. Use the `cut_list` tool with the
 - Indian-sized custom wardrobes and kitchens are usually built with the parametric cabinets plus your own sizes, or from your favourites/team library.
 
 Your own favourites, personal library and these catalogues can be indexed locally and searched with the `library_lookup` MCP tool (see the README).
+
+### Inside Advanced tool → Closet and Kitchen & Bath (observed November 2026)
+Both tools have a left rail: **Public Catalog, Team Catalog, Manufacturer Catalog, Personal Catalog, Advanced Tools**. Each catalogue has **Product Catalogue** and **Parts** tabs, folders on the left, and filter tags at the top of each folder. Advanced Tools also lists **Doors & Windows (⌥6)**.
+
+- **Closet → Product Catalogue**:
+  - **Space System** (ready combinations per room: bedroom hinged / sliding / walk-in / children / bed / TV / dressing; living TV; dining wine and sideboard; home office; entrance shoe and display; balcony; multi-function tatami).
+  - **Space Unit**: single units per room, including bay window, washing machine and no-handle units.
+  - **Open Cabinet** (no doors), **Cabinet with Hinged Door** and **Cabinet for Sliding Door**, each split into:
+    - Base Unit: floor unit on legs or skirting.
+    - Bottom Unit: lower part of a full-height wardrobe.
+    - Top Unit: **loft**.
+    - Low Unit: waist-high.
+    - Wall Unit: hanging.
+    - Tabletop Unit.
+  - Door counts 1–6; "Cut" and "Cut Beam" variants fit around columns and beams.
+  - **Special-shaped** (L, pentagon, linear-corner, chamfer, stair, partition units), **Side Cabinet**, **Desk Cabinet**, **Tatami**, **Auxiliaries** (fillers, end panels, Roman columns, lintels, pedestals, crown mouldings), **Wall Panel**, **DIY Panel**, **Decoration**, **Unit cabinet**, **Pooja Units**, **Storage Rack**, **Handrail**.
+- **Closet → Parts**:
+  - **Door library**: aluminium frame, flat, golden outline, coated, blister/membrane, solid wood, powder-coated, Popular Series. Handle-less profiles: concave, long pull, J/T-shaped, embedded handle.
+  - Shelves (glass and lit), back panels (9 / 18 mm), vertical plates.
+  - Drawers, pants racks, pull-out baskets, clothes rails, hooks, dressing mirrors, wine / Z / antique racks, light strips, ready combinations.
+- **Kitchen & Bath → Product Catalogue**:
+  - **Base Cabinet** (Common / No-handle / Decorative), filter tags With Doors, With Drawers, With Sink, With Stove, Functional (rice bin, pull-outs), With Appliance, Open, Corner, Chamfer.
+  - **Wall Cabinet**: doors, lift-up flap, open, functional (above-fridge, chimney), corner.
+  - **Tall** and **Semi-Tall Cabinet**: appliance towers, interlock pull-out pantry.
+  - **Tabletop Cabinet**.
+  - **Kitchen Appliance**: induction and gas cooktops, chimney hoods, ovens, microwaves, dishwashers, fridges by type, water heaters. Mostly US/EU models: choose by size.
+  - **Bathroom Cabinet**: wall-mounted and full-height vanities, mirror cabinets, shower enclosures.
+  - **Auxiliaries**: fillers, end panels, decorative columns, lintels, pipe covers.
+  - **Decoration**.
+- **Kitchen & Bath → Parts**:
+  - Door-panel series: flat, powder-coated, blister, frame, solid wood, golden outline, no-handle, **T/G-shaped pull (gola)**, embedded handle, Popular Series.
+  - Drawers, including multi-function pull-out basket and three-side dish (plate / thali) basket.
+  - Lintels, internal modules, light strips, bins.
+
+Handles, colours and finishes for placed cabinets are changed in the cabinet's **Style** panel or with **Global Edit → Global Style**.
