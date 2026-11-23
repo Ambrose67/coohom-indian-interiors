@@ -1,0 +1,12 @@
+{
+  "name": "coohom-indian-interiors",
+  "version": "0.1.0",
+  "description": "Design Indian kitchens, wardrobes, lofts and full homes in Coohom correctly, and generate plywood cut lists.",
+  "author": {
+    "name": "Rose Architects"
+  },
+  "homepage": "https://github.com/Ambrose67/coohom-indian-interiors",
+  "repository": "https://github.com/Ambrose67/coohom-indian-interiors",
+  "license": "MIT",
+  "keywords": ["coohom", "interior-design", "india", "kitchen", "wardrobe", "loft", "cut-list", "plywood"]
+}

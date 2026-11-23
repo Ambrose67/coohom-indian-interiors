@@ -1,0 +1,22 @@
+{
+  "project": "2BHK L-kitchen (example)",
+  "sheet": { "length": 2440, "width": 1220, "trim": 10, "kerf": 4 },
+  "defaults": {
+    "carcass": "18mm BWP ply",
+    "back": "6mm BWP ply",
+    "shutter": "18mm HDHMR",
+    "drawer_box": "12mm BWP ply",
+    "drawer_bottom": "6mm BWP ply"
+  },
+  "edges": { "internal": "0.8mm", "shutter": "2mm" },
+  "cabinets": [
+    { "id": "K01", "name": "Sink base", "width": 900, "height": 720, "depth": 560, "top": "rails", "back": "none", "shutters": 2 },
+    { "id": "K02", "name": "Hob base", "width": 900, "height": 720, "depth": 560, "top": "rails", "drawers": { "count": 2, "front_heights": [300, 400] } },
+    { "id": "K03", "name": "Oil pull-out", "width": 150, "height": 720, "depth": 560, "top": "rails", "shutters": 1 },
+    { "id": "K04", "name": "Drawer unit", "width": 600, "height": 720, "depth": 560, "top": "rails", "drawers": { "count": 3, "front_heights": [150, 250, 300] }, "qty": 2 },
+    { "id": "K05", "name": "Corner unit", "width": 900, "height": 720, "depth": 560, "top": "rails", "shelves": 1, "shutters": 1, "allow_wide_shutters": true },
+    { "id": "K06", "name": "Tall pantry", "width": 600, "height": 2100, "depth": 560, "shelves": 4, "shutters": { "count": 1, "rows": 2 } },
+    { "id": "W01", "name": "Wall unit", "width": 900, "height": 720, "depth": 350, "shelves": 1, "shutters": 2, "qty": 2 },
+    { "id": "W02", "name": "Wall unit", "width": 600, "height": 720, "depth": 350, "shelves": 1, "shutters": 1 }
+  ]
+}

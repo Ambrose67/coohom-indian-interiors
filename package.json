@@ -1,0 +1,25 @@
+{
+  "name": "coohom-indian-interiors",
+  "version": "0.1.0",
+  "description": "Claude skill + MCP server for designing Indian homes and interiors in Coohom: kitchens, wardrobes, lofts, standards and plywood cut lists.",
+  "type": "module",
+  "bin": {
+    "coohom-indian-interiors-mcp": "mcp/src/server.mjs"
+  },
+  "files": [
+    "mcp/src",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node mcp/src/server.mjs",
+    "test": "node --test mcp/test/",
+    "cutlist": "node skills/coohom-indian-interiors/scripts/cutlist.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["coohom", "interior-design", "india", "modular-kitchen", "wardrobe", "cut-list", "plywood", "mcp", "claude"],
+  "license": "MIT"
+}

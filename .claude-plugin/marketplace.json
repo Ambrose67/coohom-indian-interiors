@@ -1,0 +1,18 @@
+{
+  "name": "coohom-indian-interiors",
+  "description": "Indian residential interior design in Coohom: kitchens, wardrobes, lofts, standards and plywood cut lists.",
+  "owner": {
+    "name": "Rose Architects"
+  },
+  "plugins": [
+    {
+      "name": "coohom-indian-interiors",
+      "source": "./",
+      "description": "Skill for designing Indian kitchens, wardrobes, lofts and full homes in Coohom, with step-by-step Coohom workflows and a plywood cut-list script.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": ["coohom", "interior-design", "india", "kitchen", "wardrobe", "cut-list"],
+      "category": "design"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "project": "Master wardrobe, 10 ft ceiling (example)",
+  "defaults": {
+    "carcass": "18mm MR ply",
+    "back": "6mm MR ply",
+    "shutter": "18mm MR ply",
+    "drawer_box": "12mm MR ply",
+    "drawer_bottom": "6mm MR ply"
+  },
+  "cabinets": [
+    {
+      "id": "W01",
+      "name": "Bay 1 long hanging",
+      "width": 900,
+      "height": 2400,
+      "depth": 582,
+      "shelves": 2,
+      "shutters": 2
+    },
+    {
+      "id": "W02",
+      "name": "Bay 2 short hanging + drawers",
+      "width": 900,
+      "height": 2400,
+      "depth": 582,
+      "shelves": 1,
+      "shutters": {
+        "count": 2,
+        "height": 1770
+      },
+      "drawers": {
+        "count": 3,
+        "front_heights": [
+          200,
+          200,
+          200
+        ]
+      }
+    },
+    {
+      "id": "W03",
+      "name": "Bay 3 shelves",
+      "width": 900,
+      "height": 2400,
+      "depth": 582,
+      "shelves": 5,
+      "shutters": 2
+    },
+    {
+      "id": "L01",
+      "name": "Loft over bay 1",
+      "width": 900,
+      "height": 638,
+      "depth": 582,
+      "shutters": 2
+    },
+    {
+      "id": "L02",
+      "name": "Loft over bay 2",
+      "width": 900,
+      "height": 638,
+      "depth": 582,
+      "shutters": 2
+    },
+    {
+      "id": "L03",
+      "name": "Loft over bay 3",
+      "width": 900,
+      "height": 638,
+      "depth": 582,
+      "shutters": 2
+    }
+  ],
+  "extra_panels": [
+    {
+      "cabinet": "TRIM",
+      "part": "Top filler",
+      "material": "18mm MR ply",
+      "length": 1350,
+      "width": 75,
+      "qty": 2,
+      "grain": "none",
+      "edges": {
+        "L1": "2mm"
+      }
+    }
+  ]
+}
