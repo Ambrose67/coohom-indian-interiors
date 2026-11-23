@@ -211,10 +211,13 @@ function packOrdered(items, UL, UW, k, trim) {
     sh.nextY += it.across + k;
     return tryStrip(sh, st, it);
   };
+  const flip = (it) => ({ ...it, along: it.across, across: it.along, rotated: !it.rotated });
+  const fitsSheet = (it) => it.along <= UL + 1e-6 && it.across <= UW + 1e-6;
   for (const it of items) {
     let placed = false;
+    const alt = it.canRotate && fitsSheet(flip(it)) ? flip(it) : null;
     for (const sh of sheets) {
-      for (const st of sh.strips) if (tryStrip(sh, st, it)) { placed = true; break; }
+      for (const st of sh.strips) if (tryStrip(sh, st, it) || (alt && tryStrip(sh, st, alt))) { placed = true; break; }
       if (placed) break;
       if (sh.nextY + it.across <= UW + 1e-6 && newStrip(sh, it)) { placed = true; break; }
     }
@@ -247,7 +250,7 @@ export function packSheets(pieces, sheet = DEFAULT_SHEET) {
         if (canRotate && across <= UL && along <= UW) { [along, across] = [across, along]; rotated = !rotated; }
         else { oversize.push({ label: p.label, length: p.cut_length, width: p.cut_width }); continue; }
       }
-      items.push({ label: p.label, along, across, rotated });
+      items.push({ label: p.label, along, across, rotated, canRotate });
     }
   }
   const orders = [
@@ -255,10 +258,15 @@ export function packSheets(pieces, sheet = DEFAULT_SHEET) {
     (a, b) => b.along * b.across - a.along * a.across,
     (a, b) => b.along - a.along || b.across - a.across,
   ];
+  const flipped = items.map((it) =>
+    it.canRotate && it.across <= UL && it.along <= UW ? { ...it, along: it.across, across: it.along, rotated: !it.rotated } : it
+  );
   let sheets = null;
-  for (const cmp of orders) {
-    const res = packOrdered([...items].sort(cmp), UL, UW, k, S.trim);
-    if (!sheets || res.length < sheets.length) sheets = res;
+  for (const base of [items, flipped]) {
+    for (const cmp of orders) {
+      const res = packOrdered([...base].sort(cmp), UL, UW, k, S.trim);
+      if (!sheets || res.length < sheets.length) sheets = res;
+    }
   }
   const sheetArea = S.length * S.width;
   return {

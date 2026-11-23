@@ -101,3 +101,27 @@ test("bad specs fail with clear messages", () => {
   assert.throws(() => cutList({ cabinets: [{ id: "A", width: 0, height: 700, depth: 500 }] }), /width/);
   assert.throws(() => cutList({ cabinets: [box, box] }), /Duplicate/);
 });
+
+test("packer: mixed rotatable and grain-locked pieces never overlap or leave the sheet", () => {
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  const pieces = Array.from({ length: 60 }, (_, i) => ({
+    label: `R${i}`, cut_length: Math.round(150 + rnd() * 2000), cut_width: Math.round(80 + rnd() * 1000),
+    qty: 1, grain: i % 2 ? "none" : "length",
+  }));
+  const { sheets } = packSheets(pieces, { length: 2440, width: 1220, trim: 10, kerf: 4 });
+  const n = sheets.reduce((a, s) => a + s.placements.length, 0);
+  assert.equal(n, 60);
+  for (const s of sheets) {
+    const ps = s.placements;
+    for (let i = 0; i < ps.length; i++) {
+      const a = ps[i];
+      assert.ok(a.x >= 10 && a.y >= 10 && a.x + a.along <= 2430 + 1e-6 && a.y + a.across <= 1210 + 1e-6, "inside trimmed sheet");
+      if (Number(a.label.slice(1)) % 2 === 0) assert.equal(a.rotated, false, "grain-locked piece rotated");
+      for (let j = i + 1; j < ps.length; j++) {
+        const b = ps[j];
+        assert.ok(!(a.x < b.x + b.along && b.x < a.x + a.along && a.y < b.y + b.across && b.y < a.y + a.across), `overlap ${a.label}/${b.label}`);
+      }
+    }
+  }
+});
