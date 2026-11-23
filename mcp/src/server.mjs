@@ -6,7 +6,7 @@ import { wardrobeLayout } from "./wardrobe.mjs";
 import { cutList } from "./cutlist.mjs";
 import { lookup, topics } from "./standards.mjs";
 
-const SERVER_INFO = { name: "indian-interiors", version: "0.1.0" };
+const SERVER_INFO = { name: "indian-interiors", version: "0.1.1" };
 const PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 
 const cabinetSchema = {
