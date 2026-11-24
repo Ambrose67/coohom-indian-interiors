@@ -293,3 +293,8 @@ Both tools have a left rail: **Public Catalog, Team Catalog, Manufacturer Catalo
   - Lintels, internal modules, light strips, bins.
 
 Handles, colours and finishes for placed cabinets are changed in the cabinet's **Style** panel or with **Global Edit → Global Style**.
+- **Doors & Windows (⌥6) → Public Catalog**: libraries *Whole wood doors and windows* and *Aluminium door and window library*:
+  - Solid-wood swing doors (single, double leaf, glass core), sliding and hanging doors, concealed and folding doors.
+  - Aluminium casement windows (inward/outward, arched, irregular, bay), double- and three-track sliding windows, hanging, swing and folding doors, door-windows with mosquito screen, sunrooms, curtain-wall and arc windows.
+  - Numbers such as 65 / 88 / 137 are aluminium profile series.
+  - Place a door or window, then set its width, height and sill in the parameters.

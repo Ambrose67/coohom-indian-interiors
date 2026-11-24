@@ -84,6 +84,11 @@ export const ROOM_NEEDS = {
     { need: "desk + storage", kw: ["desk", "study", "bookcase", "book"] },
     { need: "chair", kw: ["office chair", "chair"] },
   ],
+  doors_windows: [
+    { need: "main / internal door", kw: ["swing door", "single door", "double door", "door"], size: "main 1000-1200 x 2100, bedroom 900, toilet 750" },
+    { need: "sliding / folding door", kw: ["sliding door", "folding door", "hanging"] },
+    { need: "window", kw: ["casement", "sliding window", "window", "bay window"], size: "sill 750-900" },
+  ],
   stair: [
     { need: "staircase", kw: ["stair"] },
     { need: "under-stair storage / garden", kw: ["stair storage", "under stair", "garden"] },
