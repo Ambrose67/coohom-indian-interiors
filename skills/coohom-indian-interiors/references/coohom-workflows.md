@@ -298,3 +298,17 @@ Handles, colours and finishes for placed cabinets are changed in the cabinet's *
   - Aluminium casement windows (inward/outward, arched, irregular, bay), double- and three-track sliding windows, hanging, swing and folding doors, door-windows with mosquito screen, sunrooms, curtain-wall and arc windows.
   - Numbers such as 65 / 88 / 137 are aluminium profile series.
   - Place a door or window, then set its width, height and sill in the parameters.
+- **Kitchen & Bath / Closet → catalogue dropdown → Materials** is the cabinet colour and finish library used by the Style panel.
+  - **Selected Material**: laminate/PVC finish sheets (embossed or non-embossed; high-gloss, matte, super-matte; synchronous wood grain), veneer sheet, powder coating, solid wood.
+  - **Common Material**, by grain (wood, solid colour, lacquer, stone, metal), by panel, and by craftsmanship (door panel / countertop / trim material).
+  - Glass and mirror.
+  - The dropdown also offers **Combinations**.
+- **Material & Component → Materials**:
+  - Mapping (wallpaper, wall paint, wall fabric, wood panel, pattern, wall and floor tiles, carpet).
+  - Moldings (corner, baseboard, decorative, outside corner).
+  - Ceramic (archaic, glazed, polished, porcelain, marble-look, special-shaped, slate).
+  - Stone (marble, granite, cultural, artificial, slate).
+  - Flooring (solid, composite, bamboo, cork, WPC).
+  - Buckle board, Wall panel, Coating, Carpets & Rubbers.
+  - **Schemes** (paving/laying patterns).
+  - Search by image.

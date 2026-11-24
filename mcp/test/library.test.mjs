@@ -58,3 +58,12 @@ test("keywords match at word starts only", () => {
   const r = libraryLookup({ query: "cot" }, custom);
   assert.deepEqual(r.from_your_library.map((x) => x.id), ["C"]);
 });
+
+test("room needs can prefer a catalogue", () => {
+  const custom = { ...lib, catalogues: [
+    { label: "Closet Parts", folders: { "Doors > Flat": { name: "flat door", n: 5 } } },
+    { label: "Doors & Windows > Public", folders: { "Solid Wood-Swing door > Plain": { name: "Single door", n: 23 } } },
+  ] };
+  const r = libraryLookup({ room: "doors_windows" }, custom);
+  assert.equal(r.needs[0].catalogue_folders[0].catalogue, "Doors & Windows > Public");
+});

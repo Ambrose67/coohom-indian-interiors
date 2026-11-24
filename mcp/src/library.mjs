@@ -51,13 +51,13 @@ export const ROOM_NEEDS = {
   bedroom: [
     { need: "bed (queen/king)", kw: ["bed", "bed frame", "bed combination", "headboard", "cot"], size: "Queen 1525x1980, King 1830x1980" },
     { need: "bedside table", kw: ["bedside", "nightstand", "side table"] },
-    { need: "wardrobe", kw: ["wardrobe", "closet"], size: "600 deep, 2100-2400 high" },
+    { need: "wardrobe", prefer: "Closet", kw: ["wardrobe", "closet"], size: "600 deep, 2100-2400 high" },
     { need: "dressing unit", kw: ["dresser", "dressing", "mirror"] },
     { need: "bed bench", kw: ["bed bench", "bench", "ottoman", "bed end"] },
     { need: "study desk", kw: ["desk", "study"], size: "750 h, 500-600 d" },
   ],
   kitchen: [
-    { need: "modular cabinets", kw: ["kitchen", "cabinet", "cabinetry"] },
+    { need: "modular cabinets", prefer: "Kitchen & Bath", kw: ["kitchen", "cabinet", "cabinetry"] },
     { need: "island / breakfast counter", kw: ["island", "bar counter", "bar"] },
     { need: "bar stools", kw: ["bar chair", "stool"] },
     { need: "chimney / hob / appliances", kw: ["chimney", "hood", "hob", "fridge", "refrigerator", "microwave", "oven", "dishwasher"] },
@@ -68,7 +68,7 @@ export const ROOM_NEEDS = {
     { need: "crockery unit", kw: ["crockery", "display cabinet", "decorative cabinet", "sideboard"] },
   ],
   pooja: [
-    { need: "pooja unit / mandir", kw: ["pooja", "poja", "puja", "pooja units", "mandir", "prayer", "temple"] },
+    { need: "pooja unit / mandir", prefer: "Closet", kw: ["pooja", "poja", "puja", "pooja units", "mandir", "prayer", "temple"] },
     { need: "bells / lamps / decor", kw: ["bell", "lamp", "diya", "brass"] },
   ],
   foyer: [
@@ -84,10 +84,17 @@ export const ROOM_NEEDS = {
     { need: "desk + storage", kw: ["desk", "study", "bookcase", "book"] },
     { need: "chair", kw: ["office chair", "chair"] },
   ],
+  finishes: [
+    { need: "shutter laminate / colour", prefer: "Materials", kw: ["laminate", "matte", "high-gloss", "wood grain", "veneer", "solid color"] },
+    { need: "countertop", prefer: "Materials", kw: ["countertop", "quartz", "granite", "stone", "acrylic"] },
+    { need: "wall paint / wallpaper", prefer: "Material & Component", kw: ["wall paint", "wallpaper", "paint", "coating", "mapping"] },
+    { need: "floor tiles / flooring", prefer: "Material & Component", kw: ["ceramic", "porcelain", "floor tiles", "flooring", "marble"] },
+    { need: "handles / profiles", kw: ["handle", "no-handle", "pull", "profile"] },
+  ],
   doors_windows: [
-    { need: "main / internal door", kw: ["swing door", "single door", "double door", "door"], size: "main 1000-1200 x 2100, bedroom 900, toilet 750" },
-    { need: "sliding / folding door", kw: ["sliding door", "folding door", "hanging"] },
-    { need: "window", kw: ["casement", "sliding window", "window", "bay window"], size: "sill 750-900" },
+    { need: "main / internal door", prefer: "Doors & Windows", kw: ["swing door", "single door", "double door", "door"], size: "main 1000-1200 x 2100, bedroom 900, toilet 750" },
+    { need: "sliding / folding door", prefer: "Doors & Windows", kw: ["sliding door", "folding door", "hanging"] },
+    { need: "window", prefer: "Doors & Windows", kw: ["casement", "sliding window", "window", "bay window"], size: "sill 750-900" },
   ],
   stair: [
     { need: "staircase", kw: ["stair"] },
@@ -147,15 +154,21 @@ function rank(lib, items, space) {
     .map(({ avoid, ...it }) => it);
 }
 
-function catalogueHits(lib, kws, limit = 8) {
+// Rank catalogue folders: a keyword in the folder path beats one only in the
+// sample names; a preferred catalogue (e.g. "Doors & Windows") ranks first.
+function catalogueHits(lib, kws, limit = 8, prefer) {
   const out = [];
   for (const c of lib.catalogues) {
     for (const [path, f] of Object.entries(c.folders || {})) {
-      const hay = norm(`${path} ${f.name}`);
-      if (kws.some((k) => hay.includes(norm(k)))) out.push({ catalogue: c.label, folder: path, items: f.n, widths_in: f.widths_in });
+      const p = norm(path), hay = `${p} ${norm(f.name)}`;
+      const hit = kws.filter((k) => hay.includes(norm(k)));
+      if (!hit.length) continue;
+      let score = hit.some((k) => p.includes(norm(k))) ? 2 : 1;
+      if (prefer && norm(c.label).includes(norm(prefer))) score += 3;
+      out.push({ score, catalogue: c.label, folder: path, items: f.n, widths_in: f.widths_in });
     }
   }
-  return out.slice(0, limit);
+  return out.sort((a, b) => b.score - a.score).slice(0, limit).map(({ score, ...x }) => x);
 }
 
 function publicHits(lib, kws, limit = 6) {
@@ -191,7 +204,7 @@ export function libraryLookup(i = {}, lib = loadLibrary()) {
         need: n.need,
         typical_size: n.size,
         from_your_library: rank(lib, all.filter((it) => matches(it, n.kw)), space).slice(0, Math.min(limit, 5)),
-        catalogue_folders: catalogueHits(lib, n.kw, 4),
+        catalogue_folders: catalogueHits(lib, n.kw, 4, n.prefer),
         public_categories: publicHits(lib, n.kw, 3),
       })),
     };
