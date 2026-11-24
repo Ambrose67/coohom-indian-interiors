@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "start": "node mcp/src/server.mjs",
-    "test": "node --test mcp/test/",
+    "test": "node --test mcp/test/*.test.mjs",
     "cutlist": "node skills/coohom-indian-interiors/scripts/cutlist.mjs"
   },
   "engines": {
