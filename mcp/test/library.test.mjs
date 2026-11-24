@@ -67,3 +67,9 @@ test("room needs can prefer a catalogue", () => {
   const r = libraryLookup({ room: "doors_windows" }, custom);
   assert.equal(r.needs[0].catalogue_folders[0].catalogue, "Doors & Windows > Public");
 });
+
+test("preferences with an id match that id only", () => {
+  const custom = { ...lib, preferences: { preferred: [{ id: "F5", name: "wardrobe" }], avoid: [] } };
+  const r = libraryLookup({ query: "wardrobe" }, custom);
+  assert.deepEqual(r.from_your_library.filter((x) => x.preferred).map((x) => x.id), ["F5"]);
+});

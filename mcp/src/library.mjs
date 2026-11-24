@@ -123,7 +123,7 @@ export function fits(item, space) {
 }
 
 function pref(lib, item) {
-  const hit = (list) => list.find((p) => (p.id && p.id === item.id) || (p.name && norm(item.name).includes(norm(p.name))));
+  const hit = (list) => list.find((p) => (p.id ? p.id === item.id : p.name && norm(item.name).includes(norm(p.name))));
   const p = hit(lib.preferences.preferred || []);
   const a = hit(lib.preferences.avoid || []);
   return { preferred: !!p, note: p?.note || a?.note, avoid: !!a };

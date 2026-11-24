@@ -7,7 +7,7 @@ import { cutList } from "./cutlist.mjs";
 import { lookup, topics } from "./standards.mjs";
 import { libraryLookup, ROOM_NEEDS } from "./library.mjs";
 
-const SERVER_INFO = { name: "indian-interiors", version: "0.3.3" };
+const SERVER_INFO = { name: "indian-interiors", version: "0.3.4" };
 const PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 
 const cabinetSchema = {
